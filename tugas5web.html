@@ -1,0 +1,63 @@
+<DOCTYPE html>
+<html>
+   <head>
+   	<meta charset="utf-8">
+   	<title>Tugas 5</title>
+   </head>
+   <body id="background">
+   	<h1>Worksheet 5: Document Object Model</h1>
+      <div>
+         <img id="img1" src="bunga1.jpg" alt="bunga1" width="150" height="150" onclick="tbl(id, src)"></img>
+         <img id="img2" src="bunga2.jpg" alt="bunga2" width="150" height="150" onclick="tbl(id, src)"></img>
+         <img id="img3" src="bunga3.jpg" alt="bunga3" width="150" height="150" onclick="tbl(id, src)"></img>
+
+         <p id="lorem"></p>
+         <script> document.getElementById("lorem").innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+         </script>
+
+       </div>
+       <form action="button">
+          <input type="button" value="Choose Text Color"  onclick="textcolor()">
+          <script>
+             function textcolor() {
+               let warna = prompt("input the text color: ");
+               document.getElementById("lorem").style.color = warna;
+             }
+          </script>
+          <input type="button" value="Choose Background Color" onclick="bgcolor()">
+          <script>
+             function bgcolor() {
+               let warna = prompt("input the background color: ");
+               document.getElementById("background").style.backgroundColor = warna
+             }
+          </script>
+       </form>
+
+      <div id="basket" style="border-style: solid;"> 
+         <p id="basketstat">This basket currently contains
+         <span id="count">0</span> flowers.
+         </p>
+      </div>
+
+      <script >
+         function hapusGambar(id) {
+           const hapus = document.getElementById(id);
+           hapus.remove();
+           const count = document.getElementById("basket").children.length - 1;
+           document.getElementById("count").innerHTML = count;
+           }
+
+         function tbl(id, src) {
+            const image = document.createElement("img");
+            image.setAttribute("id", "img");
+            image.setAttribute("width","150");
+            image.setAttribute("height","150");
+            image.setAttribute("onclick", "hapusGambar(id)");
+            image.src = `${src}`;
+            document.getElementById("basket").appendChild(image);
+            const count = document.getElementById("basket").children.length - 1;
+            document.getElementById("count").innerHTML = count;
+            }
+      </script>
+   </body>
+</html>
